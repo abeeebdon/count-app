@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+:root {
+  --bg-color: #fff;
+  --text-color: hsl(200, 15%, 8%);
+}
+
+[data-theme="dark"] {
+  --bg-color: #202c37;
+  --text-color: #fff;
+  .component {
+    background-color: hsl(209, 23%, 22%);
+  }
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+@layer utilities {
+  .flex-between {
+    @apply flex flex-col gap-4 sm:justify-between sm:items-center sm:flex-row;
+  }
+  .component {
+    @apply bg-white;
+  }
+}
