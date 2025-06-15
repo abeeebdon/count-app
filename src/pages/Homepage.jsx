@@ -3,8 +3,16 @@ import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { continentOptions } from "../components/Data";
 import { useNavigate } from "react-router";
+const continentOptions = [
+  { value: "africa", label: "Africa" },
+  { value: "asia", label: "Asia" },
+  { value: "europe", label: "Europe" },
+  { value: "north-america", label: "North America" },
+  { value: "south-america", label: "South America" },
+  { value: "australia", label: "Australia" },
+  { value: "antarctica", label: "Antarctica" },
+];
 
 const HomePage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -105,7 +113,12 @@ const HomePage = () => {
           </p>
         )}
         {loading ? (
-          <p>Loading ...</p>
+          Array.from({ length: 8 }, () => null).map((_, i) => (
+            <div
+              key={i}
+              className="h-55 rounded-lg bg-gray-300 animate-pulse"
+            />
+          ))
         ) : currentCountries.length === 0 ? (
           <p className="text-center col-span-full text-gray-600">
             No countries found.
